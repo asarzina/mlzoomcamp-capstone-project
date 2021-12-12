@@ -21,19 +21,19 @@ TODO...
 To run locally with Docker it's needed to comment the last line of Dockerfile
 
 ```Dockerfile
-ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "predict:app"]
-# ENTRYPOINT ["gunicorn", "predict:app"]
+ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8080", "classification:app"]
+# ENTRYPOINT ["gunicorn", "classification:app"]
 ```
 
 ```
-docker build -t project_income .
+docker build -t ml-zoomcamp-traffic-sign .
 
-docker run -it --rm -p 9696:9696 project_income:latest
+docker run -it --rm -p 8080:8080 ml-zoomcamp-traffic-sign:latest
 ```
 
 ## Demo APIs
 
-Endpoint: [https://ml-zoomcamp-income-prediction.herokuapp.com](https://ml-zoomcamp-income-prediction.herokuapp.com)
+Endpoint: [https://ml-zoomcamp-traffic-sign.herokuapp.com](https://ml-zoomcamp-traffic-sign.herokuapp.com)
 
 ### Heartbit API
 
@@ -42,33 +42,20 @@ GET `/heartbit`
 Example:
 
 ```bash
-curl --location --request GET 'https://ml-zoomcamp-income-prediction.herokuapp.com/heartbit'
+curl --location --request GET 'https://ml-zoomcamp-traffic-sign.herokuapp.com/heartbit'
 ```
 
 ### Predict API
 
-GET `/predict`
+GET `/classification`
 
 Example:
 
 ```bash
-curl --location --request POST 'https://ml-zoomcamp-income-prediction.herokuapp.com/predict' \
+curl --location --request POST 'https://ml-zoomcamp-traffic-sign.herokuapp.com/classification' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "age": 35,
-    "workclass": "private",
-    "fnlwgt": 159449,
-    "education": "bachelors",
-    "education-num": 13,
-    "marital-status": "married-civ-spouse",
-    "occupation": "exec-managerial",
-    "relationship": "husband",
-    "race": "white",
-    "sex": "male",
-    "capital-gain": 3000,
-    "capital-loss": 0,
-    "hours-per-week": 40,
-    "native-country": "italy"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/UK_traffic_sign_601.1.svg/2048px-UK_traffic_sign_601.1.svg.png"
 }'
 ```
 
@@ -77,8 +64,8 @@ curl --location --request POST 'https://ml-zoomcamp-income-prediction.herokuapp.
 To deploy to Heroku it's needed to uncomment the last line of Dockerfile
 
 ```Dockerfile
-# ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "predict:app"]
-ENTRYPOINT ["gunicorn", "predict:app"]
+# ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8080", "classification:app"]
+ENTRYPOINT ["gunicorn", "classification:app"]
 ```
 
 - Install Heroku CLI locally (see [https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli))
@@ -90,13 +77,13 @@ heroku login
 
 heroku container:login
 
-heroku create ml-zoomcamp-income-prediction
+heroku create ml-zoomcamp-traffic-sign
 ```
 
 - Compile Docker image and deploy to Heroku
 
 ```bash
-heroku container:push web -a ml-zoomcamp-income-prediction
+heroku container:push web -a ml-zoomcamp-traffic-sign
 
-heroku container:release web -a ml-zoomcamp-income-prediction
+heroku container:release web -a ml-zoomcamp-traffic-sign
 ```

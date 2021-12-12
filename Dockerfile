@@ -15,4 +15,4 @@ COPY ["classification.py", "traffic-sign-model.tflite", "./"]
 EXPOSE 8080
 
 ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8080", "classification:app"]
-# ENTRYPOINT ["gunicorn", "predict:app"]
+#ENTRYPOINT ["gunicorn", "classification:app"]
