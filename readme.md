@@ -1,4 +1,4 @@
-# Mlzoomcamp capstone project: image classificazione
+# Mlzoomcamp capstone project: image classification
 
 [https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp/12-capstone](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp/12-capstone)
 
