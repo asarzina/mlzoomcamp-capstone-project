@@ -1,16 +1,13 @@
 FROM agrigorev/zoomcamp-model:3.8.12-slim
 
+RUN apt-get update && apt-get install -y libgomp1
 RUN pip install pipenv
-RUN pip install keras-image-helper
-RUN pip install https://github.com/alexeygrigorev/tflite-aws-lambda/raw/main/tflite/tflite_runtime-2.7.0-cp38-cp38-linux_x86_64.whl
-
-WORKDIR /app
 
 COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["classification.py", "traffic-sign-model.tflite", "./"]
+COPY ["classification.py", "traffic-sign-model.h5", "./"]
 
 EXPOSE 8080
 

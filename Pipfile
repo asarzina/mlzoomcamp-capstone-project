@@ -7,7 +7,8 @@ name = "pypi"
 scikit-learn = "==1.0"
 flask = "*"
 gunicorn = "*"
-xgboost = "==0.90"
+tensorflow = "*"
+pillow = "*"
 
 [dev-packages]
 

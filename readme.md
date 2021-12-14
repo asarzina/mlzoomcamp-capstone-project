@@ -8,9 +8,43 @@ Goal: classify images with traffic signs.
 
 ## Description
 
-The project is a classification problem. I want to classify images that contain traffic signs.
+The `ipynb` file is written and executed in Colab.
 
-TODO...
+### Dataset
+
+The dataset we’ll be using to train our own custom traffic sign classifier is the German Traffic Sign Benchmark https://www.kaggle.com/valentynsichkar/traffic-signs-preprocessed.
+
+### Goal
+
+Classify images of traffic signs.
+
+### About the dataset
+
+The dataset contains preprocessed data for Traffic Signs saved into some pickle files.
+
+The images are in the following files:
+
+- train.p
+- valid.p
+- test.p
+
+There are about 34799 images. There are also a csv file with the list of sign categories (labels.csv).
+
+### Data Preparation
+
+I've converted the database into images and save them into some directories with the names from labels.csv.
+
+### Model
+
+I created a model using Keras libraries, layers and optimizers. I tried some parameters to find the best model.
+
+### Export model
+
+The final model is exported to h5 file and used in dockerized python script.
+
+### Publish
+
+The project is published to Heroku.
 
 ## Repository
 
@@ -58,6 +92,8 @@ curl --location --request POST 'https://ml-zoomcamp-traffic-sign.herokuapp.com/c
     "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/UK_traffic_sign_601.1.svg/2048px-UK_traffic_sign_601.1.svg.png"
 }'
 ```
+
+This example returns a probability that the image is a "stop" signal equal to **0.9991000294685364**.
 
 ## Deploy to Heroku
 
